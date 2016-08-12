@@ -153,6 +153,24 @@ class BlockGenerator {
     // [p, li, li, blockquote].
     this.blockList = [];
     this.depth = 0;
+
+    if(options.specialElements) {
+      for (var el in options.specialElements) {
+        SPECIAL_ELEMENTS[el] = options.specialElements[el];
+      }
+    }
+
+    if(options.inlineElements) {
+      for (var el in options.inlineElements) {
+        INLINE_ELEMENTS[el] = options.inlineElements[el];
+      }
+    }
+
+    if(options.selfClosingElements) {
+      for (var el in options.selfClosingElements) {
+        SELF_CLOSING_ELEMENTS[el] = options.selfClosingElements[el];
+      }
+    }
   }
 
   process(element: DOMElement): Array<ContentBlock> {
